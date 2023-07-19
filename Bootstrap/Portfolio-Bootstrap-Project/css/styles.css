@@ -147,7 +147,13 @@ h2:hover{
     #about .row {
         flex-direction: row; /* Display the columns side by side on medium-sized devices and above */
     }
-
+/* Add spacing between button and about section on mobile devices */
+@media (max-width: 767px) {
+    #home .col-md-6 .mt-4 {
+        margin-top: 20px; /* Add some margin between the button and the about section */
+    }
+    }
+    
     #about .col-md-6 {
         flex: 0 0 50%; /* Set the column width to 50% so that both columns occupy half the width of the container */
     }
