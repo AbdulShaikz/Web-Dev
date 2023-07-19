@@ -78,18 +78,20 @@ h2:hover::before {
 }
 
 /* Add 3D animation on hover for section headings */
-h2:hover {
+h2:hover{
     transform: rotateY(10deg);
 }
 
 /* Add hover effect to certifications and icons */
 .certification-card,
-.flying-icon {
+.flying-icon,
+.project-card {
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .certification-card:hover,
-.flying-icon:hover {
+.flying-icon:hover,
+.project-card:hover {
     transform: translateY(-5px) scale(1.02);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -116,15 +118,41 @@ h2:hover {
 
 #about .row {
     align-items: center;
-  }
-  
-  #about .col-md-6 {
+}
+
+#about .col-md-6 {
     display: flex;
     flex-direction: column;
-  }
-  
-  #about .col-md-6 img {
+    justify-content: center; /* Center-align the text vertically */
+    align-items: center; /* Center-align the image horizontally */
+}
+
+#about .col-md-6 .content {
+    text-align: left; /* Align text to the left */
+}
+
+#about .col-md-6 img {
     max-width: 100%;
     height: auto;
-    margin-bottom: 20px;
-  }
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#about .col-md-6 p {
+    margin-bottom: 0; /* Remove the margin bottom from the paragraph to align it with the image */
+}
+
+@media (min-width: 768px) {
+    /* Adjust the layout for medium-sized devices and above (e.g., tablets and desktops) */
+    #about .row {
+        flex-direction: row; /* Display the columns side by side on medium-sized devices and above */
+    }
+
+    #about .col-md-6 {
+        flex: 0 0 50%; /* Set the column width to 50% so that both columns occupy half the width of the container */
+    }
+
+    #about .col-md-6 img {
+        margin-left: 20px; /* Add some spacing between the image and text on medium-sized devices and above */
+    }
+}

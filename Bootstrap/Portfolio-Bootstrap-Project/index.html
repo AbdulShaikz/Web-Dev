@@ -12,7 +12,6 @@
     <!-- Additional favicons for different devices -->
     <link rel="apple-touch-icon" sizes="180x180" href="images/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="192x192" href="images/favicon_io/android-chrome-192x192.png">
-
     <link rel="icon" type="image/png" sizes="512x512" href="images/favicon_io/android-chrome-512x512.png">
 
     <link rel="stylesheet" href="css/styles.css">
@@ -59,42 +58,9 @@
     </header>
     
     <main>
-        <section>
-        <div class="container">
-            <!-- Carousel -->
-            <div id="carouselExampleIndicators" class="carousel slide">
-                <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="images/img-1.jpg" class="d-block w-100" alt="Meta Frontend Certification">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="images/img-2.jpg" class="d-block w-100" alt="Great Learning Frontend Certification">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="images/img-3.jpg" class="d-block w-100" alt="Problem Solving HackerRank Certification">
-                  </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
-            <!-- End of Carousel -->
-        </div>
-        </section>
-
-        <section id="home" class="py-5">
-            <div class="hero-banner">
-                <div class="container">
+        <section id="home" class="py-5 bg-light">
+            <div class="container">
+                <div class="hero-banner">
                     <div class="row align-items-center">
                         <div class="col-md-6">
                             <h1>Welcome to My Website</h1>
@@ -107,7 +73,7 @@
                         </div>
                         <div class="col-md-6">
                             <!-- Add an image of yourself or any other content here -->
-                            <img src="images/hero-banner.jpg" class="img-fluid rounded" alt="Hero Banner">
+                            <img src="images/banner.jpg" class="img-fluid rounded flying-icon" alt="Hero Banner">
                         </div>
                     </div>
                 </div>
@@ -119,24 +85,26 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <h2>About Me</h2>
-                        <p>I'm Abdul Shaik, a passionate web developer who loves exploring new technologies. I believe in learning by doing and enjoy turning ideas into reality. My skills include HTML, CSS, JavaScript, Bootstrap, Git, GitHub, and programming languages like Java and C++.</p>
+                        <div class="content">
+                            <h2>About Me</h2>
+                            <p>I'm Abdul Shaik, a passionate web developer who loves exploring new technologies. I believe in learning by doing and enjoy turning ideas into reality. My skills include HTML, CSS, JavaScript, Bootstrap, Git, GitHub, and programming languages like Java and C++.</p>
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <!-- Add an image of yourself or any other content here -->
-                        <img src="images/profile-pic.png" class="d-block w-100 img-fluid" alt="Meta Frontend Certification">
+                        <img src="images/profile-pic.png" class="d-block w-50 img-fluid rounded-circle flying-icon" alt="Profile Picture">
                     </div>
                 </div>
             </div>
-        </section>
+        </section>        
         
     
-        <section id="projects" class="py-5">
+        <section id="projects" class="py-5 bg-light">
             <div class="container">
-                <h2>Projects</h2>
+                <h2 class="mb-4">Projects</h2>
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="card mb-4 h-100">
+                        <div class="card mb-4 h-100 project-card">
                             <img src="images/attendee-app.png" class="card-img-top" alt="Attendee App">
                             <div class="card-body">
                                 <h5 class="card-title">Attendee — Mobile Application</h5>
@@ -146,7 +114,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="card mb-4 h-100">
+                        <div class="card mb-4 h-100 project-card">
                             <img src="images/car-game.png" class="card-img-top" alt="Driving Skills Car Game">
                             <div class="card-body">
                                 <h5 class="card-title">Driving Skills Car Game — Windows Application</h5>
@@ -221,8 +189,6 @@
                 </div>
             </div>
         </section>
-        
-
         
     </main>
     
