@@ -1,0 +1,130 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5; /* Light gray background color */
+    color: #333; /* Dark gray text color */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Header styles */
+header {
+    background-color: #343a40; /* Dark gray background color */
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 28px;
+    color: #fff; /* White text color */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Text shadow for a nice effect */
+}
+
+.navbar {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-item {
+    margin-right: 15px;
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: 0.3s; /* Smooth transition effect */
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Light gray background on hover */
+}
+
+/* Main styles */
+main {
+    padding: 20px;
+}
+
+/* Section heading styles */
+h2 {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+    font-size: 24px;
+    color: #007bff; /* Blue section heading color */
+    transition: transform 0.3s ease-in-out;
+}
+
+h2::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #007bff; /* Blue line color */
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out;
+}
+
+h2:hover::before {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+/* Add 3D animation on hover for section headings */
+h2:hover {
+    transform: rotateY(10deg);
+}
+
+/* Add hover effect to certifications and icons */
+.certification-card,
+.flying-icon {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.certification-card:hover,
+.flying-icon:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom CSS for the carousel */
+#carouselExampleIndicators .carousel-inner .carousel-item img {
+    object-fit: cover;
+    height: 400px; /* Adjust this value to your desired height */
+    width: 100%;
+}
+
+/* Custom CSS for the carousel control buttons */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5); /* Change this value to adjust the background color of the buttons */
+    border-radius: 50%;
+}
+
+/* Custom CSS for the carousel control buttons (icon color) */
+.carousel-control-prev-icon:before,
+.carousel-control-next-icon:before {
+    color: #ffffff; /* Change this value to adjust the color of the icon */
+}
+
+#about .row {
+    align-items: center;
+  }
+  
+  #about .col-md-6 {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #about .col-md-6 img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
