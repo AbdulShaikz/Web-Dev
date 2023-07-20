@@ -78,7 +78,7 @@ h2:hover::before {
 }
 
 /* Add 3D animation on hover for section headings */
-h2:hover{
+h2:hover {
     transform: rotateY(10deg);
 }
 
@@ -116,6 +116,7 @@ h2:hover{
     color: #ffffff; /* Change this value to adjust the color of the icon */
 }
 
+/* About section styles */
 #about .row {
     align-items: center;
 }
@@ -125,10 +126,6 @@ h2:hover{
     flex-direction: column;
     justify-content: center; /* Center-align the text vertically */
     align-items: center; /* Center-align the image horizontally */
-}
-
-#about .col-md-6 .content {
-    text-align: left; /* Align text to the left */
 }
 
 #about .col-md-6 img {
@@ -142,23 +139,101 @@ h2:hover{
     margin-bottom: 0; /* Remove the margin bottom from the paragraph to align it with the image */
 }
 
-@media (min-width: 768px) {
-    /* Adjust the layout for medium-sized devices and above (e.g., tablets and desktops) */
-    #about .row {
-        flex-direction: row; /* Display the columns side by side on medium-sized devices and above */
-    }
-/* Add spacing between button and about section on mobile devices */
+/* Responsive styles for smaller devices (e.g., mobile phones) */
 @media (max-width: 767px) {
+    /* Adjust header padding for smaller screens */
+    header {
+        padding: 10px;
+    }
+
+    /* Make the header text size smaller for smaller screens */
+    header h1 {
+        font-size: 24px;
+    }
+
+    /* Hide the navigation items by default on smaller screens */
+    .navbar {
+        display: none;
+    }
+
+    /* Show the navigation items as a vertical menu when the menu icon is clicked */
+    .menu-icon {
+        display: block;
+    }
+
+    /* Hide the main content on smaller screens to show the navigation menu */
+    main {
+        display: none;
+    }
+
+    /* Styles for the vertical navigation menu */
+    .menu-icon:checked ~ .navbar {
+        display: flex;
+        flex-direction: column;
+        background-color: #343a40;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .menu-icon:checked ~ .navbar .nav-item {
+        margin-right: 0;
+        text-align: center;
+        padding: 15px 0;
+    }
+    
+    /* Add spacing between button and about section on mobile devices */
     #home .col-md-6 .mt-4 {
         margin-top: 20px; /* Add some margin between the button and the about section */
     }
-    }
-    
-    #about .col-md-6 {
-        flex: 0 0 50%; /* Set the column width to 50% so that both columns occupy half the width of the container */
+
+
+     /* Add spacing between elements of each section on mobile devices */
+    /* You can adjust the margin and padding values as needed */
+    #home {
+        padding-top: 30px; /* Add some space at the top */
+        padding-bottom: 10px;
     }
 
-    #about .col-md-6 img {
-        margin-left: 20px; /* Add some spacing between the image and text on medium-sized devices and above */
+    #about,
+    #skills,
+    #portfolio,
+    #contact {
+        padding-top: 20px; /* Add some space at the top of each section */
+        padding-bottom: 10px;
+    }
+
+    #about .col-md-6 .mt-4 {
+        margin-top: 15px; /* Add spacing between the button and the about section */
+    }
+
+    #skills .row .col-md-4,
+    #portfolio .row .col-md-4,
+    #contact .row .col-md-6 {
+        margin-bottom: 15px; /* Add spacing between the items within each section */
+    }
+
+    /* Add spacing between the elements within each section */
+    #portfolio .row .col-md-4 + .col-md-4,
+    #contact .row .col-md-6 + .col-md-6,
+    #about .col-md-6 img + .content {
+        margin-top: 15px; /* Add spacing between the elements */
+    }
+
+    /* Adjust spacing between profile image and about content */
+    #about .col-md-6 .content {
+        margin-top: 20px; /* Add spacing between profile image and about content */
+    }
+
+    /* Adjust spacing between banner image and home content */
+    #home .col-md-6 .content {
+        margin-top: 20px; /* Add spacing between banner image and home content */
+    }
+    
+    /* Add spacing between project cards */
+    .project-card {
+        margin-bottom: 15px;
     }
 }
