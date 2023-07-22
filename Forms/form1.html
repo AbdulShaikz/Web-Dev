@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form 1</title>
+</head>
+<body>
+    <form>
+        <h2>Credit Card Details</h2>
+        <table>
+            <tr>
+                <td colspan="2">
+                    <h2>Card Type: </h2>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="2">
+                    <label for="card_type1">Mastercard </label>
+                    <input type="radio" name="card_type" id="card_type1">
+                    <label for="card_type2">Visa </label>
+                    <input type="radio" name="card_type" id="card_type2">
+                    <label for="card_type3">American Express </label>
+                    <input type="radio" name="card_type" id="card_type3">
+                    <label for="card_type4">Diners Club </label>
+                    <input type="radio" name="card_type" id="card_type4">
+                </td>
+                <td>
+                    <label for="card_number">Card Number </label>
+                    <input type="number" name="card_number" id="card_number">
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="2">
+                    <label for="expiry_date">Expiry date: </label>
+                    <input type="date" name="expiry_date" id="expiry_date">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="address">Delivery Address </label>
+                    <textarea name="address" id="address" cols="30" rows="10">
+                    
+                    </textarea>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <button type="submmit">Send Order</button>
+        <button type="reset">Clear form</button>
+    </form>
+</body>
+</html>
