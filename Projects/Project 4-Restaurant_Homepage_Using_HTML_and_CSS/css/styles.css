@@ -1,0 +1,61 @@
+body {
+    background-color: #FFD700;
+    font-family: sans-serif;
+    margin: 3rem 5%;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+header > img {
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+    height: 8rem;
+}
+
+nav{
+    background-color: #000000;
+    padding: 0.1rem;
+    border-radius: 15px;
+    margin-top: 1rem;
+}
+
+nav ul {
+    list-style: none;
+    text-align: center;
+}
+
+nav li {
+    display: inline-block;
+}
+
+nav li a{
+    color:#FFD700
+}
+section {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+article {
+    flex: 1;
+}
+
+footer {
+    display: flex;
+}
+
+footer > div {
+    flex: 1;
+}
+
+footer > div > img {
+    width: 2.5rem;
+    height: auto;
+}
