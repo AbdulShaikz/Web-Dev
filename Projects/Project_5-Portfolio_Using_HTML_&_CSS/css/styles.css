@@ -60,6 +60,7 @@ a:hover{
     }
     to{
         transform: rotateY(360deg);
+        border-bottom: 1px solid white;
         color:white;
     }
 }
@@ -72,6 +73,13 @@ section>h1{
     text-align: center;
     /* background-color: cadetblue; */
 }
+
+section article{
+    flex: 1; /* Adjust the width as per your preference */
+    margin-bottom: 1rem; /* Add some margin between articles */
+    max-width: 400px;
+}
+
 
 .hero{
     margin: 1rem auto;
@@ -99,6 +107,22 @@ section>h1{
     /* background-color: burlywood; */
 }
 
+.projects-container article, 
+.certifications-container article{
+    background-color: white;
+    color: black;
+    flex: 1;
+    border: 1px solid grey;
+    padding: 2rem;
+    margin: 1rem;
+    width: 100%;
+}
+
+.projects-container article:hover, 
+.certifications-container article:hover{
+    background-color: black;
+    color: white;
+}
 
 form{
     display: flex;
@@ -139,4 +163,17 @@ footer>div:nth-child(3){
     flex:1;
     justify-content: center;
     /* text-align: center; */
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    header{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    ul{
+        flex-direction: column;
+        align-items: center;
+    }
 }
