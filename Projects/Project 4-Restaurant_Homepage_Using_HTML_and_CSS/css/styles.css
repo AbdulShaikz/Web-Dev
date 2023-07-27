@@ -2,6 +2,10 @@
 Article background: white (#FFFFFF), article text: black (#000000), article links: gold (#FFD700)
 Main background: gold (#FFD700), main text: black (#000000), main links: white (#FFFFFF) */
 
+* {
+    box-sizing: border-box;
+  }
+  
 body {
     background-color: #FFD700;
     font-family: sans-serif;
@@ -121,3 +125,71 @@ footer > div:nth-child(2){
     justify-content: end;
     border-top: 1px solid black;
 }
+
+/* Media Query for Tablets and Larger Phones */
+@media only screen and (max-width: 768px) {
+    /* Adjust font size for better readability on smaller screens */
+    body {
+      font-size: 16px;
+    }
+  
+    /* Center the header logo on smaller screens */
+    header img {
+      width: 80%;
+      height: auto;
+    }
+  
+    /* Make the navigation links stack vertically on smaller screens */
+    nav ul {
+      display: block;
+      text-align: center;
+    }
+  
+    nav li {
+      display: block;
+      margin: 1rem;
+    }
+  
+    /* Adjust article layout for smaller screens */
+    section {
+      margin: 1rem;
+    }
+  
+    .mainArticle,
+    .otherArticles {
+      margin: 0;
+    }
+  
+    .otherArticles {
+      padding: 0;
+    }
+  
+    /* Adjust the width of the article and center the images */
+    section > article {
+      width: 100%;
+      margin: 1rem auto;
+    }
+  
+    /* Adjust the width and height of images in h2 + img */
+    h2 + img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+  
+  /* Media Query for Mobile Phones */
+  @media only screen and (max-width: 480px) {
+    /* Adjust font size for better readability on even smaller screens */
+    body {
+      font-size: 14px;
+    }
+  
+    /* Further adjustments for navigation links */
+    nav ul {
+      margin: 0;
+    }
+  
+    nav li {
+      margin: 0.5rem;
+    }
+  }
