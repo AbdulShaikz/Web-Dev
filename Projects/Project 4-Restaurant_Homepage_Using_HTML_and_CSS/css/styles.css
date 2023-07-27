@@ -1,7 +1,12 @@
+/* Navbar background: black (#000000), navbar text: gold (#FFD700), navbar links: white (#FFFFFF)
+Article background: white (#FFFFFF), article text: black (#000000), article links: gold (#FFD700)
+Main background: gold (#FFD700), main text: black (#000000), main links: white (#FFFFFF) */
+
 body {
     background-color: #FFD700;
     font-family: sans-serif;
     margin: 3rem 5%;
+    line-height: 1.5rem;
 }
 
 h1 {
@@ -12,16 +17,17 @@ h2 {
     font-size: 2rem;
 }
 
-header > img {
+header img {
     display: block;
     margin: 0 auto;
     width: fit-content;
     height: 8rem;
 }
 
+/* Navbar Styles */
 nav{
     background-color: #000000;
-    padding: 0.1rem;
+    padding: 0.08rem;
     border-radius: 15px;
     margin-top: 1rem;
 }
@@ -36,19 +42,65 @@ nav li {
 }
 
 nav li a{
-    color:#FFD700
+    color:#FFD700;
+    padding: 1rem;
+    text-decoration: none;
+    font-weight: bold;
 }
+
+/* Main Article Section Styles */
 section {
     display: flex;
     flex-wrap: wrap;
+    margin: 2rem;
 }
 
-article {
+.mainArticle {
+    background: url("../images/banner.jpg") center repeat aliceblue;
+    color: aliceblue;
+    padding: 0.8rem;
+    border-radius: 15px;
+    margin: 0.08rem -2rem;
+}
+
+.otherArticles{
+    padding: 0.8rem;
+    margin: 0.08rem -2rem;
+}
+
+article{
+    background-color: #FFFFFF;
+    color: #000000;
+    padding: 1rem;
+    border-top-right-radius: 15px;
+}
+
+section > article {
     flex: 1;
+    margin: 0 1rem;
 }
 
+article table{
+    margin: 0 auto;
+}
+
+article a{
+    color: #0606ee;
+}
+/* Adjust Image Sizes in h2 + img */
+h2 + img{
+    display: block;
+    width: 100%;
+    max-width: 25rem;
+    height: 50%;
+    margin: 1rem auto;
+}
+
+/* Footer Styles */
 footer {
     display: flex;
+    /* background-color: #FD0; */
+    padding: 1rem;
 }
 
 footer > div {
@@ -58,4 +110,12 @@ footer > div {
 footer > div > img {
     width: 2.5rem;
     height: auto;
+    display: block;
+    /* margin: 0 auto; */
+}
+
+footer > div:nth-child(2){
+    display: flex;
+    justify-content: end;
+    border-top: 1px solid black;
 }
