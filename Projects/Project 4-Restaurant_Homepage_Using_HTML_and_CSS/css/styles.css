@@ -69,10 +69,11 @@ section {
 }
 
 article{
+    width: auto;
     background-color: #FFFFFF;
     color: #000000;
-    padding: 1rem;
-    border-top-right-radius: 15px;
+    padding: 0.8rem;
+    border-radius: 10px;
 }
 
 section > article {
@@ -92,8 +93,9 @@ h2 + img{
     display: block;
     width: 100%;
     max-width: 25rem;
-    height: 50%;
+    height: 15rem;
     margin: 1rem auto;
+    object-fit: cover;
 }
 
 /* Footer Styles */
