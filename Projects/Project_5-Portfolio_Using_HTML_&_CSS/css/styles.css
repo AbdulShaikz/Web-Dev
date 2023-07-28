@@ -77,7 +77,7 @@ section h1:hover{
 section>h1{
     text-align: center;
     /* background-color: cadetblue; */
-    /* animation: headingAnimation 2s linear; */
+    animation: headingAnimation 2s linear;
 }
 
 section article{
