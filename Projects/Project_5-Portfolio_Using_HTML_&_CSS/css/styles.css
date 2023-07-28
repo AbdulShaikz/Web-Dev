@@ -101,6 +101,10 @@ section article{
     /* background-color: aqua; */
 }
 
+.about-container img{
+    width: 100%;
+    height: 50%;
+}
 
 .about-container, 
 .projects-container, 
@@ -109,6 +113,7 @@ section article{
     display: flex;
     justify-content: space-around;
     align-items: center;
+    gap: 1rem;
     margin: 1rem auto;
     padding: 1.5rem;
     /* background-color: burlywood; */
@@ -179,7 +184,7 @@ footer{
 
 
 footer>div>img{
-    width: 100%;
+    max-width: 3rem;
     height: auto;
 }
 
@@ -213,11 +218,22 @@ footer>div:nth-child(3){
         align-items: center;
     }
 
+    .about-container{
+        display: flex;
+        flex-direction: column;
+        align-content: space-around;
+    }
+
     .projects-container,
     .certifications-container,
     .form-container{
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    footer>div>img{
+        max-width: 3rem;
+        height: auto;
     }
 }
