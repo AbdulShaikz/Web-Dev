@@ -52,6 +52,10 @@ a:visited{
 a:hover{
     color:blue;
 }
+a:active{
+    background-color: green;
+    color:black;
+}
 
 @keyframes myAnimation {
     from{
@@ -143,8 +147,8 @@ footer{
 
 
 footer>div>img{
-    width: 3rem;
-    height: 3rem;
+    width: 100%;
+    height: auto;
 }
 
 footer>div:nth-child(1){
@@ -173,6 +177,14 @@ footer>div:nth-child(3){
     }
 
     ul{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .projects-container,
+    .certifications-container,
+    .form-container{
+        display: flex;
         flex-direction: column;
         align-items: center;
     }
