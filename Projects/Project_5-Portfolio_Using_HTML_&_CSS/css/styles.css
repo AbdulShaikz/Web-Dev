@@ -84,6 +84,7 @@ section article{
     flex: 1; /* Adjust the width as per your preference */
     margin-bottom: 1rem; /* Add some margin between articles */
     max-width: 400px;
+    flex-wrap: wrap;
 }
 
 
@@ -113,7 +114,7 @@ section article{
     /* background-color: burlywood; */
 }
 
-.projects-container article, 
+.projects-container article,
 .certifications-container article{
     background-color: white;
     color: black;
@@ -128,6 +129,7 @@ section article{
 .certifications-container article:hover{
     background-color: black;
     color: white;
+    border: 3px solid white;
 }
 
 form{
