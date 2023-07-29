@@ -3,193 +3,242 @@ Article background: white (#FFFFFF), article text: black (#000000), article link
 Main background: gold (#FFD700), main text: black (#000000), main links: white (#FFFFFF) */
 
 * {
-    box-sizing: border-box;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    background-color: #FFD700;
-    font-family: sans-serif;
-    margin: 3rem 5%;
-    line-height: 1.5rem;
+  background-color: #FFD700;
+  font-family: sans-serif;
+  margin: 3rem 5%;
+  line-height: 1.8rem;
+}
+
+@keyframes fade {
+  0%{
+    opacity: 0;
+  }
+  25%{
+    opacity: 0.3;
+  }
+  50%{
+    opacity: 0.5;
+  }
+  75%{
+    opacity: 0.8;
+  }
+  100%{
+    opacity: 1;
+  }
 }
 
 h1 {
-    font-size: 3rem;
+  font-size: 3rem;
+  margin: 1rem;
+  line-height: 3rem;
+  animation:fade 1s ease-out;
 }
 
 h2 {
-    font-size: 2rem;
+  font-size: 2rem;
+  line-height: 2rem;
+}
+
+p{
+  margin: 1rem;
+}
+
+header{
+  padding: 0.8rem;
 }
 
 header img {
-    display: block;
-    margin: 0 auto;
-    width: fit-content;
-    height: 8rem;
+  display: block;
+  margin: 0 auto;
+  width: fit-content;
+  height: 8rem;
 }
 
+.mainArticle p{
+  animation: fade 1s ease-in 0.2s backwards;
+}
 /* Navbar Styles */
-nav{
-    background-color: #000000;
-    padding: 0.08rem;
-    border-radius: 15px;
-    margin-top: 1rem;
+nav {
+  background-color: #000000;
+  margin: 1rem 0;
+  padding: 0.8rem;
+  border-radius: 15px;
 }
 
 nav ul {
-    list-style: none;
-    text-align: center;
+  list-style: none;
+  text-align: center;
 }
 
 nav li {
-    display: inline-block;
+  display:inline-block;
 }
 
-nav li a{
-    color:#FFD700;
-    padding: 1rem;
-    text-decoration: none;
-    font-weight: bold;
+nav li a {
+  color: #FFD700;
+  padding: 1rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:link{
+  color: #FFD700;
+}
+nav a:visited{
+  color: #FFD700;
+}
+nav a:hover{
+  background-color: #FFFFFF;
 }
 
 /* Main Article Section Styles */
 section {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 0;
 }
 
 .mainArticle {
-    background: url("../images/banner.jpg") center repeat aliceblue;
-    color: aliceblue;
-    padding: 0.8rem;
-    border-radius: 15px;
-    margin: 0.08rem -2rem;
+  background: url("../images/banner.jpg") center repeat aliceblue;
+  background-position: top;
+  width: 100%;
+  color: aliceblue;
+  padding: 0.8rem;
+  border-radius: 15px;
 }
 
-.otherArticles{
-    padding: 0.8rem;
-    margin: 0.08rem -2rem;
+.otherArticles {
+  padding: 0.8rem 0;
 }
 
-article{
-    width: auto;
-    background-color: #FFFFFF;
-    color: #000000;
-    padding: 0.8rem;
-    border-radius: 10px;
+.otherArticles article:hover{
+  border: 5px solid black;
 }
 
-section > article {
-    flex: 1;
-    margin: 0 1rem;
+article {
+  width: auto;
+  background-color: #FFFFFF;
+  color: #000000;
+  padding: 0.8rem;
+  border-radius: 10px;
 }
 
-article table{
-    margin: 0 auto;
+section>article {
+  flex: 1;
 }
 
-article a{
-    color: #0606ee;
+article a:link, article a:visited {
+  color: #0606ee;
 }
+
+
 /* Adjust Image Sizes in h2 + img */
-h2 + img{
-    display: block;
-    width: 100%;
-    max-width: 25rem;
-    height: 15rem;
-    margin: 1rem auto;
-    object-fit: cover;
+h2+img {
+  display: block;
+  width: 100%;
+  max-width: 25rem;
+  height: 15rem;
+  margin: 1rem auto;
+  object-fit: cover;
 }
 
 /* Footer Styles */
 footer {
-    display: flex;
-    /* background-color: #FD0; */
-    padding: 1rem;
+  display: flex;
+  /* background-color: #FD0; */
+  padding: 1rem 0;
 }
 
-footer > div {
-    flex: 1;
+footer>div {
+  flex: 1;
 }
 
-footer > div > img {
-    width: 2.5rem;
-    height: auto;
-    display: block;
-    /* margin: 0 auto; */
+footer>div>img {
+  width: 2.5rem;
+  height: auto;
+  display: block;
+  /* margin: 0 auto; */
 }
 
-footer > div:nth-child(2){
-    display: flex;
-    justify-content: end;
-    border-top: 1px solid black;
+footer>div:nth-child(2) {
+  display: flex;
+  justify-content: end;
+  border-top: 1px solid black;
 }
 
 /* Media Query for Tablets and Larger Phones */
 @media only screen and (max-width: 768px) {
-    /* Adjust font size for better readability on smaller screens */
-    body {
-      font-size: 16px;
-    }
-  
-    /* Center the header logo on smaller screens */
-    header img {
-      width: 80%;
-      height: auto;
-    }
-  
-    /* Make the navigation links stack vertically on smaller screens */
-    nav ul {
-      display: block;
-      text-align: center;
-    }
-  
-    nav li {
-      display: block;
-      margin: 1rem;
-    }
-  
-    /* Adjust article layout for smaller screens */
-    section {
-      margin: 1rem;
-    }
-  
-    .mainArticle,
-    .otherArticles {
-      margin: 0;
-    }
-  
-    .otherArticles {
-      padding: 0;
-    }
-  
-    /* Adjust the width of the article and center the images */
-    section > article {
-      width: 100%;
-      margin: 1rem auto;
-    }
-  
-    /* Adjust the width and height of images in h2 + img */
-    h2 + img {
-      max-width: 100%;
-      height: auto;
-    }
+
+  /* Adjust font size for better readability on smaller screens */
+  body {
+    font-size: 16px;
   }
-  
-  /* Media Query for Mobile Phones */
-  @media only screen and (max-width: 480px) {
-    /* Adjust font size for better readability on even smaller screens */
-    body {
-      font-size: 14px;
-    }
-  
-    /* Further adjustments for navigation links */
-    nav ul {
-      margin: 0;
-    }
-  
-    nav li {
-      margin: 0.5rem;
-    }
+
+  /* Center the header logo on smaller screens */
+  header img {
+    width: 80%;
+    height: auto;
   }
+
+  /* Make the navigation links stack vertically on smaller screens */
+  nav ul {
+    display: block;
+    text-align: center;
+  }
+
+  nav li {
+    display: block;
+    margin: 1rem;
+  }
+
+  /* Adjust article layout for smaller screens */
+  section {
+    margin: 1rem;
+  }
+
+  .mainArticle,
+  .otherArticles {
+    margin: 0;
+  }
+
+  .otherArticles {
+    padding: 0;
+  }
+
+  /* Adjust the width of the article and center the images */
+  section>article {
+    width: 100%;
+    margin: 1rem auto;
+  }
+
+  /* Adjust the width and height of images in h2 + img */
+  h2+img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Media Query for Mobile Phones */
+@media only screen and (max-width: 480px) {
+
+  /* Adjust font size for better readability on even smaller screens */
+  body {
+    font-size: 14px;
+  }
+
+  /* Further adjustments for navigation links */
+  nav ul {
+    margin: 0;
+  }
+
+  nav li {
+    margin: 0.5rem;
+  }
+}
