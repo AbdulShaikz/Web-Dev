@@ -8,6 +8,10 @@
         padding: 8rem 0;
     }
 
+    @include respond(phone){
+        padding: 5rem 0;
+    }
+
     &__logo-box{
         text-align: center;
         margin-bottom: 8rem;
@@ -52,7 +56,7 @@
             background-color: $color-grey-dark-3;
             color: $color-grey-light-1;
             text-decoration: none;
-            text-transform: capitalize;
+            text-transform:capitalize;
             transition: all .2s;
         }
 
