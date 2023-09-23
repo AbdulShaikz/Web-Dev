@@ -42,5 +42,22 @@ let myDate = new Date();
 // let createdDate2 = new Date("01-29-2023")
 // console.log(createdDate2.toLocaleString())
 
-let timestamp = Date.now()
-console.log(timestamp)
+// let timestamp = Date.now()
+// console.log(timestamp)
+
+
+//this keyword
+
+function hello(){
+    let greet = "Hello World!"
+    console.log(this)       // refers to global object
+    console.log(this.greet)
+    console.log("----")
+}
+
+hello()
+
+let greet = () =>{
+    console.log(this)   // {}
+}
+greet()
