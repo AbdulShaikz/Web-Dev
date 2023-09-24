@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html,
+body{
+    font-size: 62.5%;
+    box-sizing: border-box;
+    font-weight: 700;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+}
+
+body{
+    background-color: #f1f1f1;
+}
+
+.header{
+    font-size: 2rem;
+}
+
+.center{
+    width: 50%;
+    padding: 2rem;
+    margin: auto;
+    text-align: center;
+}
+
+.color-panel {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background-color: bisque;
+    border: 2px solid black;
+    flex-wrap: wrap;
+}
+
+.color {
+    flex: 1;
+    min-height: 10rem;
+    min-width: 1rem;
+    border: 2px solid black;
+    transform: scale(.8);
+    transition: all .2s;
+    border-radius: 1rem;
+}
+
+/* .color:not(:last-child){
+    border-right: none;
+} */
+
+.color:hover{
+    transform: scale(1.1);
+    border: 2px solid red;
+    border-radius: 1rem;
+}
+
+.color:hover .color{
+    transform: scale(.5);
+}
+
+
+#orange{
+    background-color:orange;
+}
+#white{
+    background-color:white;
+}
+#green{
+    background-color:green;
+}
+#yellow{
+    background-color:yellow;
+}
+#purple{
+    background-color:purple;
+}
+
+/* .button{
+    width: 25%;
+    font-size: 2rem;
+    padding: 3rem;
+    border: 2px solid blue;
+    border-radius: 5rem;
+}
+
+.button:hover{
+    background-color: aqua;
+    color: black;
+    cursor: pointer;
+} */
+@media (max-width:768px) {
+    
+    .color-panel {
+        flex-direction: column;
+        width: 20rem;
+    }
+
+    .color {
+        height: 5rem;
+        width: 10rem;
+    }
+}
