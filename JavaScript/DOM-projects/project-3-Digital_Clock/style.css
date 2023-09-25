@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body{
+    font-size: 62.5%;
+  }
+  
+  .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-color: black;
+  }
+  
+  .time-container {
+    text-align: center;
+    font-size: 3rem;
+    padding: 1rem;
+    border: 2px solid white;
+    border-radius: 8px;
+    background-image: url("./colors.jpg");
+    background-size:cover;
+    background-color: black;
+    -webkit-background-clip: text;
+    
+    color: transparent; /* Keep the text color transparent */
+    background-blend-mode:multiply;
+  }
+  
