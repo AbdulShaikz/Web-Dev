@@ -48,7 +48,7 @@ let myDate = new Date();
 
 //this keyword
 
-function hello(){
+/* function hello(){
     let greet = "Hello World!"
     console.log(this)       // refers to global object
     console.log(this.greet)
@@ -60,4 +60,70 @@ hello()
 let greet = () =>{
     console.log(this)   // {}
 }
-greet()
+greet() */
+
+//Promises
+
+const testVariable = "helloWord!"
+
+console.log(testVariable);
+console.log(testVariable);
+
+// const promiseOne = new Promise(function(resolve,reject){
+
+//     setTimeout(function(){
+//         console.log("Promise resolved!");
+//     },1000)
+//     resolve(resolve);
+// })
+
+// promiseOne.then((resolve)=>{
+//     console.log("R",resolve);
+// })
+
+// new Promise(function(resolve,reject){
+
+//     setTimeout(function(){
+//         console.log("Promise 2 Timeout")
+//     },1000)
+//     resolve({username:"Abdul", id:"1"});
+//     reject();
+// }).then(function(user){
+//     console.log("Promise 2 resolved!")
+//     console.log(user);
+//     return user.username;
+// }).then(function(username){
+//     console.log(username);
+// }).catch(function(){
+//     console.log("Promise 2 rejected!!");
+//     console.log("err:");
+// }).finally(
+//     console.log("Promise has resolved or rejected!")
+// )
+
+
+// const promiseThree = new Promise(function(resolve,reject){
+//     setTimeout(function(){
+//         console.log("Promise 3 Timout!")
+//         let error = true;
+//         if(!error){
+//             resolve({userName: "Shaik", id:"2"})
+//         }else{
+//             reject("Something went wrong!");
+//         }
+//     },1000)
+// });
+
+// // promises can also be handled using asyn await
+
+// async function consumePromiseThree(){
+//     try{
+//         const response = await promiseThree;
+//         console.log(response)
+//     }catch(e){
+//         console.log("e: ",e);
+//     }
+// }
+
+// consumePromiseThree();
+
