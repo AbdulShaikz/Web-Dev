@@ -1,2 +1,2 @@
 # Web-Dev
-A repository for practicing the web development
+A repository for learning the web development from scratch
