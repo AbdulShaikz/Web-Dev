@@ -1,20 +1,33 @@
-function TodoInput() {
+import { useState } from 'react'
+import { useTodo } from '../contexts/TodoContext';
+
+function TodoForm() {
+    const [todo, setTodo] = useState("")
+    const {addTodo} = useTodo()
+
+    const add = (e) => {
+      e.preventDefault()
+
+      if (!todo) return
+
+      addTodo({ todo, completed: false})
+      setTodo("")
+    }
+
   return (
-    <div className="h-full w-1/2 bg-[url('./assets/Background-2.png')] bg-cover">
-      <div className="flex justify-center items-center h-1/2">
-        <h1
-          className="text-8xl text-center font-[poppins] font-bold
-        bg-[url('./assets/colorful.jpg')] bg-cover bg-clip-text text-transparent"
-        >
-          Todo
-        </h1>
-      </div>
-      <div className="flex gap-1 m-8">
-        <input type="text" placeholder="Todo thing" className="bg-red w-full h-8 p-5 rounded-lg" />
-        <button className="px-3 text-white bg-gradient-to-br from-orange-800 to-green-800 rounded-lg">Add</button>
-      </div>
-    </div>
+      <form onSubmit={add}  className="flex">
+          <input
+              type="text"
+              placeholder="Write Todo..."
+              className="w-full border border-black/10 rounded-l-lg px-3 outline-none duration-150 bg-white py-1.5"
+              value={todo}
+              onChange={(e) => setTodo(e.target.value)}
+          />
+          <button type="submit" className="rounded-r-lg px-3 py-1 bg-green-600 text-white shrink-0">
+              Add
+          </button>
+      </form>
   );
 }
 
-export default TodoInput;
+export default TodoForm;
