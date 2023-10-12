@@ -1,14 +1,21 @@
-function TodoList() {
+import TodoItem from "./TodoItem";
+
+function TodoList({todos, deleteTodo, toggleTodo}) {
     return (
-        <div className="text-black w-full">
-            <form className="flex gap-1 items-center">
-                <input type="checkbox" />
-                <input type="text" className="p-3" disabled={true} />
-                <button
-                className="bg-blue-800 p-3">Edit</button>
-                <button
-                className="bg-red-800 p-3">Delete</button>
-            </form>
+        <div className="flex flex-col items-center justify-center w-full">
+          <h2 className="text-white text-2xl font-bold font-[poppins] m-8">My Todo List</h2>
+          <ul className="text-white font-[poppins] space-y-3">
+            {todos.length === 0 && "No Todos"}
+            {todos.map((todo) => {
+              return (
+                <TodoItem {...todo}
+                    title = {todo.title}
+                    key ={todo.id}
+                    toggleTodo={toggleTodo}
+                    deleteTodo={deleteTodo}/>
+              )
+            })}
+          </ul>
         </div>
     );
 }

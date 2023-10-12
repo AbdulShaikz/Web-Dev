@@ -1,23 +1,26 @@
 import { useState } from "react";
-import {useTodo} from '../context/TodoContext';
 
-function TodoForm() {
-    const [input, setInput] = useState();
-    const context = useTodo();
+function TodoForm({onSubmit}) {
+    const [input,setInput] = useState("");
+    
+    function handleSubmit(e){
+        e.preventDefault();
+        if(input==="") return 
 
-    const addTodo = () =>{
-        
+        onSubmit(input)
+
+        setInput("")
     }
+
     return (
-        <form onSubmit= {addTodo} className="flex m-8 w-full">
-            <input 
-            className="text-black w-full"
-            type="text"  
-            value ={ input}
-            onChange = {(e) =>{setInput(e.target.value)}}            
-            />
-            <button
-            className="text-white bg-green-800 p-5">Add</button>
+        <form
+          onSubmit={handleSubmit} 
+          className="flex justify-center items-center">
+          <input type="text"
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            className="py-3 w-full"/>
+          <button className="bg-green-800 text-white px-5 py-3">Add</button>
         </form>
     );
 }
