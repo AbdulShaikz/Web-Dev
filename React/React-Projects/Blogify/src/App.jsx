@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { authService } from "./appwrite/auth";
 import { login, logout } from "./store/authSlice";
+import { Outlet } from "react-router-dom";
+import { Footer, Header } from "./components";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -22,9 +24,13 @@ function App() {
   }, []);
 
   return !loading ? (
-    <div className="flex flex-wrap h-screen w-full bg-gray-800 text-white">
-      <div>
-        <h1>Blogify</h1>
+    <div className="min-h-screen flex flex-wrap content-between bg-gray-400">
+      <div className="w-full block">
+        <Header />
+        <main>
+          <Outlet />
+        </main>
+        <Footer />
       </div>
     </div>
   ) : null;
