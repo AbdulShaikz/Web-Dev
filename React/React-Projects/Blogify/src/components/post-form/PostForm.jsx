@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useCallback, useEffect } from "react"
 import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom"
@@ -15,16 +16,17 @@ function PostForm({post}) {
         }
     })
 
-    const navigate = useNavigate()
-    const userData = useSelector((state) => state.auth.userData)
+    const navigate = useNavigate();
+    const userData = useSelector((state) => state.auth.userData);
 
     const submit = async (data) => {
 
         if(post){
-            const file = data.image[0] ? appwriteService.uploadFile(data.image[0]) : null
+            const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null
+            // console.log("image is : ",data.image);
 
             if(file){
-                appwriteService.deleteFile(post.feauturedImage)
+                appwriteService.deleteFile(post.featuredImage)
             }
 
             const dbPost = await appwriteService.updatePost(post.$id, {
@@ -33,19 +35,22 @@ function PostForm({post}) {
             })
 
             if(dbPost){
-                navigate(`/post/${dbPost.$id}`)
+                navigate(`/post/${dbPost.$id}`);
             }
         } else{
-            const file = await data.image[0] ? appwriteService.uploadFile(data.image[0]) : null
-
+            const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null
+            // console.log("File is" ,data.image[0])
             if(file){
-                const fileId = file.$id
-                data.featuredImage = fileId
+                const fileId = file.$id;
+                data.featuredImage = fileId;
+                // console.log("New Post Id: ", fileId)
 
+                // console.log("ID is: ",userData.$id)
                 const dbPost = await appwriteService.createPost({
                     ...data,
-                    userId: userData.$id
+                    userId: userData.$id,
                 })
+                // console.log("ID is: ",dbPost.userId)
 
                 if(dbPost){
                     navigate(`/post/${dbPost.$id}`)
@@ -59,15 +64,14 @@ function PostForm({post}) {
         if(value && typeof value === 'string'){
             return value.trim()
                         .toLowerCase()
-                        .replace(/^[a-zA-Z\d\s]+/g,"-")
-                        .replace(/\s/g,'-')
-
+                        .replace(/[^a-zA-Z\d\s]+/g, "-")
+                        .replace(/\s/g, "-")
         }
-        return ''
+        return "";
     },[]);
 
     useEffect(()=>{
-        const subscription = watch((value, {name}) =>{
+        const subscription = watch((value, {name}) => {
             if(name==='title'){
                 setValue("slug", slugTransform(value.title), {shouldValidate: true});
             }

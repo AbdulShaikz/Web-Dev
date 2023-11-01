@@ -16,6 +16,7 @@ export class Service{
     }
 
     async createPost({title, slug, content,featuredImage, status, userId}){
+        // console.log("UserId in create post is: ", userId)
         try{
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
@@ -98,8 +99,9 @@ export class Service{
             return await this.bucket.createFile(
                 conf.appwriteBucketId,
                 ID.unique(),
-                file
+                file,
             )
+            
         }catch(error){
             console.log("Appwrite service:: fileUpload ::error ", error);
             return false;
