@@ -15,7 +15,6 @@ const authSlice = createSlice({
             state.userData = action.payload;
             // console.log("Im in AuthSlice status is: ", state.status);
             // console.log("Im in AuthSlice: ", state.userData);
-            
         },
         logout: (state) => {
             state.status = false;
