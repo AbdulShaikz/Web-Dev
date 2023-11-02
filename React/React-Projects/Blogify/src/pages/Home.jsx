@@ -5,17 +5,19 @@ import { useSelector } from "react-redux";
 
 
 function Home() {
-  const auth = useSelector((state) => state.auth.status)
+  const authStatus = useSelector((state) => state.auth.status)
   const [posts, setPosts] = useState([]);
-  const userId = useSelector((state) => state.auth.userData.$id);
+  const userId = useSelector((state) => state.auth.userData);
 
   useEffect(() => {
-    appwriteService.getPosts().then((posts) => {
-      if (posts) {
-        const userPosts = posts.documents.filter((post) => post.userId === userId)
-        setPosts(userPosts);
-      }
-    });
+    if(authStatus){
+      appwriteService.getPosts().then((posts) => {
+        if (posts) {
+          const userPosts = posts.documents.filter((post) => post.userId.$id === userId)
+          setPosts(userPosts);
+        }
+      });
+    }
   }, []);
 
   if (posts.length === 0) {
@@ -24,7 +26,7 @@ function Home() {
         <Container>
           <div className="flex flex-wrap">
             <div className="p-2 w-full">
-              {auth? <h1 className="text-2xl text-white font-bold hover:text-[#4E4FEB]">No posts created</h1> : <h1 className="text-2xl text-white font-bold hover:text-[#4E4FEB]">
+              {authStatus? <h1 className="text-2xl text-white font-bold hover:text-[#4E4FEB]">No posts created</h1> : <h1 className="text-2xl text-white font-bold hover:text-[#4E4FEB]">
                 Login to read posts
               </h1>}
             </div>
