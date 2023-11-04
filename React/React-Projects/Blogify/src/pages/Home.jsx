@@ -7,14 +7,16 @@ import { useSelector } from "react-redux";
 function Home() {
   const authStatus = useSelector((state) => state.auth.status)
   const [posts, setPosts] = useState([]);
-  const userId = useSelector((state) => state.auth.userData);
+  
+  // const userId = useSelector((state) => state.auth.userData);
 
   useEffect(() => {
     if(authStatus){
       appwriteService.getPosts().then((posts) => {
         if (posts) {
-          const userPosts = posts.documents.filter((post) => post.userId.$id === userId)
-          setPosts(userPosts);
+          // const userPosts = posts.documents.filter((post) => post.userId=== userId.$id)
+          // console.log(userPosts);
+          setPosts(posts.documents);
         }
       });
     }
@@ -42,7 +44,7 @@ function Home() {
         <div className="flex flex-wrap">
           {posts.map((post) => (
             <div key={post.$id} className="p-2 w-1/4">
-              <PostCard {...post} />
+              <PostCard {...post}/>
             </div>
           ))}
         </div>

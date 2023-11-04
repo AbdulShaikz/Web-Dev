@@ -12,7 +12,7 @@ function AllPosts() {
         appwriteService.getPosts([]).then((posts) => {
             if(posts){
                 const userPosts = posts.documents.filter((post) => post.userId === userId)
-                setPosts(userPosts)
+                setPosts(userPosts);
             }
         })
     },[])

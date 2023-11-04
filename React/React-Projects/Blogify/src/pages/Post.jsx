@@ -11,6 +11,7 @@ export default function Post() {
     const navigate = useNavigate();
 
     const userData = useSelector((state) => state.auth.userData);
+    const userName = userData?userData.name:"";
 
     const isAuthor = post && userData ? post.userId === userData.$id : false;
 
@@ -56,6 +57,9 @@ export default function Post() {
                     )}
                 </div>
                 <div className="w-full mb-6">
+                    {isAuthor ? <h5 className="text-sm">
+                        Published by <span className="text-sm italic">{userName}</span>
+                    </h5> : userName}
                     <h1 className="text-2xl font-bold">{post.title}</h1>
                 </div>
                 <div className="browser-css">
