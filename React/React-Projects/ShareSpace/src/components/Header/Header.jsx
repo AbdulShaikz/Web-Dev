@@ -1,8 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Container, Logo } from "../index.js";
+import { Container, Logo, LogoutButton } from "../index.js";
+import { useSelector } from "react-redux";
 
 function Header() {
-  // const authStatus = useSelector((state) => state.auth.status);
+  const authStatus = useSelector((state) => state.auth.status);
   const navigate = useNavigate();
   const navItems = [
     {
@@ -13,22 +14,22 @@ function Header() {
     {
       name: "Login",
       slug: "/login",
-      active: true,
+      active: !authStatus,
     },
     {
       name: "Signup",
       slug: "/signup",
-      active: true,
+      active: !authStatus,
     },
     {
       name: "My Posts",
       slug: "/my-posts",
-      active: true,
+      active: authStatus,
     },
     {
       name: "Add Post",
       slug: "/add-post",
-      active: true,
+      active: authStatus,
     },
   ];
 
@@ -47,13 +48,14 @@ function Header() {
                 <li key={item.name} className="flex justify-center items-center">
                   <button
                     onClick={() => navigate(item.slug)}
-                    className="inline-bock px-6 py-2 duration-300 hover:bg-[#00cee6] rounded-3xl hover:text-black"
+                    className="inline-bock px-6 py-2 duration-300 hover:bg-black rounded-3xl hover:text-white"
                   >
                     {item.name}
                   </button>
                 </li>
               ) : null
             )}
+            { authStatus && (<li className="flex justify-center items-center"><LogoutButton/></li>)}
           </ul>
         </nav>
       </Container>
