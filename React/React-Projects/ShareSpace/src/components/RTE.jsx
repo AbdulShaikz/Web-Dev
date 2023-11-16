@@ -3,9 +3,9 @@ import { Editor } from "@tinymce/tinymce-react";
 import { Controller } from "react-hook-form";
 import conf from "../conf/conf.js";
 
-function RTE({ name, control, label, defaultValue = "" }) {
+function Rte({ name, control, label, defaultValue = ""}) {
   return (
-    <div className="w-full">
+    <div className='w-full'>
       {label && (
         <label className="text-base font-medium text-white inline-block mb-1">
           {label}
@@ -56,4 +56,4 @@ function RTE({ name, control, label, defaultValue = "" }) {
     </div>
   );
 }
-export default RTE;
+export default Rte;

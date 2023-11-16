@@ -4,14 +4,15 @@ import App from "./App.jsx";
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./pages/Home.jsx";
-import Login from "./pages/LoginPage.jsx";
-import Signup from "./pages/SignUpPage.jsx";
+import {Login, AuthLayout, EditPost} from "./components/index.js"
 import MyPosts from "./pages/MyPosts.jsx";
 import AddPost from "./pages/AddPost.jsx";
 import { Provider } from "react-redux";
 import store from "./store/store.js";
 import CheckEmail from "./components/CheckEmail.jsx";
 import VerifyEmail from "./components/VerifyEmail.jsx";
+import SignUp from "./components/SignUp.jsx";
+import Post from "./pages/Post.jsx";
 
 const router = createBrowserRouter([
   {
@@ -24,19 +25,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <Login />,
+        element: (
+          <AuthLayout authentication={false}>
+            <Login/>
+          </AuthLayout>
+          ),
       },
       {
         path: "/signup",
-        element: <Signup />,
-      },
-      {
-        path: "/my-posts",
-        element: <MyPosts />,
-      },
-      {
-        path: "/add-post",
-        element: <AddPost />,
+        element: (
+          <AuthLayout authentication={false}>
+            <SignUp/>
+          </AuthLayout>
+          ),
       },
       {
         path: "/check-email",
@@ -45,6 +46,38 @@ const router = createBrowserRouter([
       {
         path: "/verify-email",
         element: <VerifyEmail />,
+      },
+      {
+        path: "/my-posts",
+        element: (
+          <AuthLayout authentication>
+            <MyPosts/>
+          </AuthLayout>
+          ),
+      },
+      {
+        path: "/add-post",
+        element: (
+          <AuthLayout authentication>
+            <AddPost/>
+          </AuthLayout>
+          ),
+      },
+      {
+        path: "/post/:slug",
+        element: (
+          <AuthLayout authentication>
+            <Post/>
+          </AuthLayout>
+          ),
+      },
+      {
+        path: "/edit-post/:slug",
+        element: (
+          <AuthLayout authentication>
+            <EditPost/>
+          </AuthLayout>
+          ),
       },
     ],
   },

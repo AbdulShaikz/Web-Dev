@@ -25,7 +25,7 @@ class Service {
     status,
   }) {
     try {
-      await this.databases.createDocument(
+      return await this.databases.createDocument(
         conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
         slug,
@@ -45,7 +45,7 @@ class Service {
 
   async updatePost(slug, { title, content, thumbnail, status }) {
     try {
-      await this.databases.updateDocument(
+      return await this.databases.updateDocument(
         conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
         slug,
@@ -76,7 +76,7 @@ class Service {
 
   async getPost(slug) {
     try {
-      await this.databases.getDocument(
+      return await this.databases.getDocument(
         conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
         slug
@@ -88,7 +88,7 @@ class Service {
 
   async getAllPosts(queries = [Query.equal("status", "active")]) {
     try {
-      await this.databases.listDocuments(
+      return await this.databases.listDocuments(
         conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
         queries
@@ -125,9 +125,9 @@ class Service {
     }
   }
 
-  async getFilePreview(fileId){
+   getFilePreview(fileId){
     try {
-        return await this.bucket.getFilePreview(
+         return  this.bucket.getFilePreview(
             conf.appwriteBucketId,
             fileId,
         )

@@ -1,14 +1,20 @@
 import { useDispatch } from "react-redux";
 import appwriteAuthService from "../../appwrite/appwriteAuth.js";
-import authSliceLogout from "../../store/authSlice.js";
+import {authSliceLogout} from "../../store/authSlice.js";
+import { useNavigate } from "react-router-dom";
 
 function LogoutButton() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const logoutHandler = () => {
-    appwriteAuthService.logout().then(() => {
-      dispatch(authSliceLogout());
-    });
+    appwriteAuthService
+      .logout()
+      .then(() => {
+        dispatch(authSliceLogout());
+        navigate('/login');
+      })
+      .catch((err) => console.log("logout Handler :: ", err));
   };
 
   return (

@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useForm } from "react-hook-form"
-import Input from "../Input";
-import {Button, PostStatus, RTE} from "../index";
+import {Button, Input, PostStatus, Rte} from "../index";
 import appwriteStorage from '../../appwrite/appwriteStorage.js'
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -19,14 +18,15 @@ function PostForm({post}) {
 
     const navigate = useNavigate();
     const userData = useSelector((state) => state.auth.userData);
+    
 
     const onSubmit = async (data) => {
-        console.log(data);
+        // console.log(data);
         const file = data.image[0] ? await appwriteStorage.uploadFile(data.image[0]) : null;
         if(post){
             // const file = data.image[0] ? await appwriteStorage.uploadFile(data.image[0]) : null;
 
-            if(file) appwriteStorage.deleteFile(post.thumbnail);
+            if(file) await appwriteStorage.deleteFile(post.thumbnail);
 
             const dbPost = await appwriteStorage.updatePost(post.$id, {
                 ...data,
@@ -35,14 +35,17 @@ function PostForm({post}) {
 
             if(dbPost) navigate(`/post/${dbPost.$id}`);
         }else{
+            console.log("FOrm data: ",data);
             if(file){
                 const fileId = file.$id;
                 data.thumbnail = fileId;
+                console.log("UserData inside PostForm: ", userData);
                 const dbPost = await appwriteStorage.createPost({
                     ...data,
                     userId: userData.$id,
+                    author: userData.name,
                 })
-
+                console.log(dbPost);
                 if(dbPost) navigate(`/post/${dbPost.$id}`);
             }
         }
@@ -69,7 +72,7 @@ function PostForm({post}) {
     },[watch, slugTransform, setValue])
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-wrap">
-        <div className="w-2/3 px-2">
+        <div className="md:w-2/3 sm:w-full sm:mb-4 px-2">
             <Input
                 label = "Title: "
                 placeholder = "Title"
@@ -85,9 +88,9 @@ function PostForm({post}) {
                     setValue("slug", slugTransform(e.currentTarget.value), {shouldValidate: true})
                 }}
             />
-            <RTE label="Content: " name="content" control ={control} defaultValue={getValues("content")}/>
+            <Rte label="Content: " name="content" control ={control} defaultValue={getValues("content")} />
         </div>
-        <div className="w-1/3 px-2">
+        <div className="md:w-1/3 sm:w-full px-2">
             <Input
                 label="Thumbnail: "
                 type="file"

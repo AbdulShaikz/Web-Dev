@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 
-function Container({children}) {
+function Container({children, className=""}) {
   return (
-    <div className="w-full max-w-[88rem] mx-auto px-5">{children}</div>
+    <div className={`w-full max-w-[88rem] mx-auto px-5 ${className}`}>{children}</div>
   )
 }
 
