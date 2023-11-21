@@ -44,16 +44,6 @@ export class AuthService {
       return await this.account.updateVerification(userId,token);
     } catch (error) {
       console.log("Error while sending verification mail to your email: ", error);
-    }
-  }
-
-  async doesEmailExist(email) {
-    try {
-      const response = await this.account.listUsers(email, 'email', 1, 0, 'ASC');
-      const { users } = response;
-      return users.length > 0;
-    } catch (error) {
-      console.error('Error checking email existence:', error);
       throw error;
     }
   }
@@ -72,6 +62,7 @@ export class AuthService {
       return await this.account.updateRecovery(userId, secret, password, confirmPassword);
     } catch (error) {
       console.log("Error while resetting password: ", error);
+      throw error;
     }
   }
 
@@ -84,6 +75,23 @@ export class AuthService {
     }
   }
 
+  siginWithGoogle(google,success,failure){
+    try {
+      return this.account.createOAuth2Session('google',success,failure)
+    } catch (error) {
+      console.log("Error while signing in with google: ", error);
+      throw error;
+    }
+  }
+
+  async googleSession(){
+    try {
+      return await this.account.getSession('current');
+    } catch (error) {
+      console.log("Error while completing google sign in session: ", error);
+      throw error;
+    }
+  }
   async getCurrentUser() {
     try {
       return await this.account.get();

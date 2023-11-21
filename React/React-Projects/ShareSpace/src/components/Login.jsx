@@ -29,6 +29,17 @@ function Login() {
     }
   };
 
+  const handleGoogleSignIn = () => {
+    appwriteAuthService.siginWithGoogle('google', 'http://localhost:5173/google-auth-callback', 'http://localhost:5173/google-auth-callback')
+      .then(() => {
+        // After successful Google Sign-In, redirecting the user to the desired page
+        navigate('/');
+      })
+      .catch(error => {
+        console.error('Error during Google Sign-In:', error);
+      });
+  };
+
   return (
     <section className="flex justify-center py-8">
       <div className="grid grid-cols-1 w-1/2 rounded-lg shadow-lg shadow-white bg-black">
@@ -101,6 +112,7 @@ function Login() {
               <Button
                 type="button"
                 bgColor="bg-black"
+                onClick ={handleGoogleSignIn}
                 className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-black px-3.5 py-2.5 font-semibold text-white transition-all duration-200 hover:bg-white hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
               >
                 <span className="mr-2 inline-block">

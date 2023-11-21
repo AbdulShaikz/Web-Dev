@@ -15,6 +15,7 @@ import SignUp from "./components/SignUp.jsx";
 import Post from "./pages/Post.jsx";
 import ResetPassword from "./components/ResetPassword.jsx";
 import ForgotPassword from "./components/ForgotPassword.jsx";
+import GoogleAuthCallback from "./components/GoogleAuthCallback.jsx";
 
 const router = createBrowserRouter([
   {
@@ -87,6 +88,12 @@ const router = createBrowserRouter([
           <AuthLayout authentication>
             <EditPost/>
           </AuthLayout>
+          ),
+      },
+      {
+        path: "/google-auth-callback",
+        element: (
+            <GoogleAuthCallback/>
           ),
       },
     ],

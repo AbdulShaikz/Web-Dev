@@ -35,6 +35,17 @@ function SignUp() {
     }
   };
 
+  const handleGoogleSignIn = () => {
+    appwriteAuthService.siginWithGoogle('google', 'http://localhost:5173/google-auth-callback', 'http://localhost:5173/google-auth-callback')
+      .then(() => {
+        // After successful Google Sign-In, redirecting the user to the desired page
+        navigate('/');
+      })
+      .catch(error => {
+        console.error('Error during Google Sign-In:', error);
+      });
+  };
+  
   return (
     <section className="flex justify-center py-8">
       <div className="grid grid-cols-1 w-1/2 rounded-lg shadow-lg shadow-white bg-black">
@@ -105,6 +116,7 @@ function SignUp() {
               <Button
                 type="button"
                 bgColor="bg-black"
+                onClick={handleGoogleSignIn}
                 className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-black px-3.5 py-2.5 font-semibold text-white transition-all duration-200 hover:bg-white hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
               >
                 <span className="mr-2 inline-block">
@@ -117,7 +129,7 @@ function SignUp() {
                     <path d="M20.283 10.356h-8.327v3.451h4.792c-.446 2.193-2.313 3.453-4.792 3.453a5.27 5.27 0 0 1-5.279-5.28 5.27 5.27 0 0 1 5.279-5.279c1.259 0 2.397.447 3.29 1.178l2.6-2.599c-1.584-1.381-3.615-2.233-5.89-2.233a8.908 8.908 0 0 0-8.934 8.934 8.907 8.907 0 0 0 8.934 8.934c4.467 0 8.529-3.249 8.529-8.934 0-.528-.081-1.097-.202-1.625z"></path>
                   </svg>
                 </span>
-                Sign up with Google
+                Sign in with Google
               </Button>
             </div>
           </div>
