@@ -13,6 +13,8 @@ import CheckEmail from "./components/CheckEmail.jsx";
 import VerifyEmail from "./components/VerifyEmail.jsx";
 import SignUp from "./components/SignUp.jsx";
 import Post from "./pages/Post.jsx";
+import ResetPassword from "./components/ResetPassword.jsx";
+import ForgotPassword from "./components/ForgotPassword.jsx";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +48,14 @@ const router = createBrowserRouter([
       {
         path: "/verify-email",
         element: <VerifyEmail />,
+      },
+      {
+        path: "/forgot-password",
+        element: <ForgotPassword />,
+      },
+      {
+        path: "/reset-password",
+        element: <ResetPassword />,
       },
       {
         path: "/my-posts",

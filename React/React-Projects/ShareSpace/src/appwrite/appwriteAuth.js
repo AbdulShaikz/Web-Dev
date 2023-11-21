@@ -14,10 +14,6 @@ export class AuthService {
 
   async createAccount({ email, password, name }) {
     try {
-      /* put this inside create {
-           sendVerfication: true,
-           url: 'https://localhost:5173/home'
-        } */
       const userAccount = await this.account.create(
         ID.unique(),
         email,
@@ -35,12 +31,47 @@ export class AuthService {
     }
   }
 
-  async verifyAccount(url) {
+  async sendVerificationEmail(url){
     try {
       return await this.account.createVerification(url);
     } catch (error) {
-      console.log("Error while verifying the account: ", error);
+      console.log("Error while sending verification mail to your email: ", error);
+    }
+  }
+
+  async confirmVerification(userId, token){
+    try {
+      return await this.account.updateVerification(userId,token);
+    } catch (error) {
+      console.log("Error while sending verification mail to your email: ", error);
+    }
+  }
+
+  async doesEmailExist(email) {
+    try {
+      const response = await this.account.listUsers(email, 'email', 1, 0, 'ASC');
+      const { users } = response;
+      return users.length > 0;
+    } catch (error) {
+      console.error('Error checking email existence:', error);
       throw error;
+    }
+  }
+
+  async resetPasswordLink(email, url){
+    try {
+      return await this.account.createRecovery(email,url);
+    } catch (error) {
+      console.log("Error while sending resetpassword link: ", error);
+      throw error;
+    }
+  }
+
+  async resetPassword(userId, secret, password, confirmPassword){
+    try {
+      return await this.account.updateRecovery(userId, secret, password, confirmPassword);
+    } catch (error) {
+      console.log("Error while resetting password: ", error);
     }
   }
 

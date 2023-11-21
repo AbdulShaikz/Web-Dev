@@ -19,7 +19,9 @@ function SignUp() {
     setError("");
     try {
       const session = await appwriteAuthService.createAccount(data);
+      const verifyEmail = await appwriteAuthService.sendVerificationEmail("http://localhost:5173/verify-email")
       
+      console.log("VerifyEmail Data: ",verifyEmail);
       if (session) {
         const userData = await appwriteAuthService.getCurrentUser();
         if (userData) {
@@ -69,7 +71,7 @@ function SignUp() {
                   {...register("email", {
                     required: true,
                     validate: {
-                      matchPatern: (value) =>
+                      matchPattern: (value) =>
                         /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
                           value
                         ) || "Email address must be a valid address",

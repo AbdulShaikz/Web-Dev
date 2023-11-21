@@ -1,40 +1,35 @@
-// VerifyEmail.jsx
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import appwriteAuthService from "../appwrite/appwriteAuth.js";
+import { useEffect, useState } from "react";
 
 function VerifyEmail() {
-    const navigate = useNavigate();
 
-    useEffect(() => {
-        const verifyEmail = async () => {
-            try {
-                // Extract the verification token from the URL
-                const queryParams = new URLSearchParams(window.location.search);
-                const verificationURL = queryParams.get("verification");
+  const [verifyStatus, setVerifyStatus] = useState(false);
+  const [errors, setErrors] = useState("");
 
-                // Verify the email using the verification token
-                await appwriteAuthService.verifyAccount({ url: verificationURL });
+  useEffect(() => {
+    setErrors("")
+    try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const secret = urlParams.get("secret");
+        const userId = urlParams.get("userId");
 
-                // Email verification successful
-                console.log("Email verification successful.");
-
-                // Redirect the user to the home page or wherever you want
-                navigate("/");
-            } catch (error) {
-                console.error("Error verifying email: ", error);
-                // Handle the error, e.g., display an error message to the user
-            }
-        };
-
-        verifyEmail();
-    }, [navigate]);
-
-    return (
-        <div>
-            <p>Verifying your email...</p>
-        </div>
-    );
+    const session = appwriteAuthService.confirmVerification(userId, secret);
+    console.log("Session in Verify Email is:", session);
+    if (session) {
+      setVerifyStatus(true);
+    //   navigate("/");
+    }
+    } catch (error) {
+        setErrors(error.message)
+    }
+  },[]);
+  return verifyStatus ? (
+    <div className="flex justify-center text-green-500 py-8 h-full text-2xl">Email verified!</div>
+  ) : (
+    <div className="flex justify-center text-red-500 py-8 h-full text-2xl">
+      <p>{errors}</p>
+    </div>
+  );
 }
 
 export default VerifyEmail;

@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Button, Input } from "./index.js";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import appwriteAuthService from "../appwrite/appwriteAuth.js";
@@ -9,20 +9,18 @@ import { authSliceLogin } from "../store/authSlice.js";
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const userDatas = useSelector((state) => state.auth.status);
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit} = useForm();
   const [error, setError] = useState("");
 
   const login = async (data) => {
     setError("");
-    console.log(userDatas);
 
     try {
       const session = await appwriteAuthService.login(data);
       if (session) {
         const userData = await appwriteAuthService.getCurrentUser();
+        console.log("UserData :", userData);
         if (userData) dispatch(authSliceLogin(userData));
-        console.log(userDatas);
         navigate("/");
       }
     } catch (error) {
@@ -50,6 +48,7 @@ function Login() {
               </Link>
             </p>
             {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
+            
             <form className="mt-8" onSubmit={handleSubmit(login)}>
               <div className="space-y-5">
                 <Input
@@ -59,7 +58,7 @@ function Login() {
                   {...register("email", {
                     required: true,
                     validate: {
-                      matchPatern: (value) =>
+                      matchPattern: (value) =>
                         /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
                           value
                         ) || "Email address must be a valid address",
@@ -77,11 +76,10 @@ function Login() {
                   })}
                 />
                 <Link
-                  to="/signup"
+                  to="/forgot-password"
                   title=""
                   className="text-sm font-semibold text-[#3f7cb3] transition-all duration-200 hover:underline hover:text-white"
                 >
-                  {" "}
                   Forgot password?{" "}
                 </Link>
                 <Button
