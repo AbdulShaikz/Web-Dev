@@ -4,7 +4,12 @@ import { Input, Button } from "../components";
 import { useForm } from "react-hook-form";
 
 function ForgotPassword() {
-  const { register, handleSubmit, formState:{errors} } = useForm();
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors },
+  } = useForm();
   const [message, setMessage] = useState("");
 
   const resetPassword = async (data) => {
@@ -14,15 +19,22 @@ function ForgotPassword() {
         data.email,
         "http://localhost:5173/reset-password"
       );
-      console.log(emailSent);
       if (emailSent) {
         setMessage("Password Reset link has been sent to your email!");
-      } 
+      } else {
+        setError("email", {
+          type: "manual",
+          message: "Failed to send reset instructions. Please try again later.",
+        });
+      }
     } catch (error) {
-        setMessage(error.message);
+      // setMessage(error.message);
+      setError("email", {
+        type: "manual",
+        message: error.message,
+      });
     }
   };
-
 
   return (
     <section className="flex justify-center py-8">
@@ -57,12 +69,20 @@ function ForgotPassword() {
                   Reset
                 </Button>
                 {errors.email && (
-                  <p className="text-red-500 mt-2 text-center">{errors.email.message}</p>
+                  <p className="text-red-500 mt-2 text-center">
+                    {errors.email.message}
+                  </p>
                 )}
-                {message && message.includes("has been sent to your email") ? (
-                  <p className="text-green-500 mt-8 text-center">{message}</p>
-                ) : (
-                  <p className="text-red-800 mt-8 text-center">{message}</p>
+                {message && (
+                  <p
+                    className={`mt-8 text-center ${
+                      message.includes("sent")
+                        ? "text-green-500"
+                        : "text-red-800"
+                    }`}
+                  >
+                    {message}
+                  </p>
                 )}
               </div>
             </form>

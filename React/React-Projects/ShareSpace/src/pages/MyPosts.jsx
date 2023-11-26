@@ -1,24 +1,38 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import appwriteStorage from "../appwrite/appwriteStorage"
-import { Container, PostCard } from "../components";
+import appwriteStorage from "../appwrite/appwriteStorage";
+import { Container, PostCard, Spinner } from "../components";
 
 function MyPosts() {
   const authStatus = useSelector((state) => state.auth.status);
-  const userData = useSelector(state => state.auth.userData);
+  const userData = useSelector((state) => state.auth.userData);
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (authStatus) {
-      appwriteStorage.getAllPosts([]).then((post) => {
-        if (post){
-          const userPosts = post.documents.filter(post => post.userId === userData.$id)
-          setPosts(userPosts)
-        }
-      });
+      appwriteStorage
+        .getAllPosts([])
+        .then(
+          (post) => {
+            if (post) {
+              const userPosts = post.documents.filter(
+                (post) => post.userId === userData.$id
+              );
+              setPosts(userPosts);
+            }
+          },
+          (error) => {
+            console.error("Error fetching posts:", error);
+          }
+        )
+        .finally(() => {
+          setLoading(false);
+        });
     }
-  }, []);
+  }, [authStatus, userData]);
 
+  if (loading) return <Spinner />;
   if (posts.length === 0) {
     return (
       <div className="w-full py-8 mt-4 text-center">
@@ -47,7 +61,7 @@ function MyPosts() {
         <div className="flex flex-wrap">
           {posts.map((post) => (
             <div key={post.$id} className="p-2 w-full sm:w-1/4 flex-wrap">
-              <PostCard {...post}/>
+              <PostCard {...post} />
             </div>
           ))}
         </div>
@@ -55,4 +69,4 @@ function MyPosts() {
     </div>
   );
 }
-export default MyPosts
+export default MyPosts;

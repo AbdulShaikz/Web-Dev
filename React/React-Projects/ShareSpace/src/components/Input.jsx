@@ -1,7 +1,9 @@
+/* eslint-disable react/prop-types */
+
 import React, { useId } from "react";
 
 const Input = React.forwardRef(function Input({
-  label,
+  label="",
   type = "text",
   className = "",
   ...props
@@ -21,6 +23,7 @@ const Input = React.forwardRef(function Input({
         {...props}
         id={id}
         ref={ref}
+        aria-label={label}
       />
     </div>
   );

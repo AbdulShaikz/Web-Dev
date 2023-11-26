@@ -5,7 +5,18 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        moveDiagonal: {
+          '0%': {
+            transform: 'translate(-100%, -100%)',
+          },
+          '100%': {
+            transform: 'translate(100%, 100%)',
+          },
+        },
+      },
+    },
   },
   plugins: [],
 }

@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import Spinner from "./Spinner";
 
 function AuthLayout({children, authentication=true}) {
     const navigate = useNavigate();
@@ -16,6 +17,6 @@ function AuthLayout({children, authentication=true}) {
         }
         setLoader(false);
     },[authStatus, navigate, authentication])
-    return loader ? <h1> Loading...</h1> : <>{children}</>
+    return loader ? <Spinner/> : <>{children}</>
 }
 export default AuthLayout

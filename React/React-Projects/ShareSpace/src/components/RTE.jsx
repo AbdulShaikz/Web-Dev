@@ -3,9 +3,9 @@ import { Editor } from "@tinymce/tinymce-react";
 import { Controller } from "react-hook-form";
 import conf from "../conf/conf.js";
 
-function Rte({ name, control, label, defaultValue = ""}) {
+function Rte({ name, control, label, defaultValue = "" }) {
   return (
-    <div className='w-full'>
+    <div className="w-full text-black">
       {label && (
         <label className="text-base font-medium text-white inline-block mb-1">
           {label}
@@ -15,9 +15,11 @@ function Rte({ name, control, label, defaultValue = ""}) {
       <Controller
         name={name || "content"}
         control={control}
+        defaultValue={defaultValue || ""}
         render={({ field: { onChange } }) => (
           <Editor
             apiKey={conf.tinyMCE_ApiKey}
+            initialValue={defaultValue}
             init={{
               initialValue: defaultValue,
               height: 500,
@@ -39,7 +41,6 @@ function Rte({ name, control, label, defaultValue = ""}) {
                 "insertdatetime",
                 "media",
                 "table",
-                "code",
                 "help",
                 "wordcount",
                 "anchor",

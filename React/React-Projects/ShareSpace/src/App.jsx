@@ -3,7 +3,7 @@ import {Outlet} from "react-router-dom";
 
 function App() {
   return (
-<div className={`min-h-screen flex flex-wrap content-between bg-[#193d4e]`}>
+<div className="min-h-screen flex flex-wrap content-between bg-black">
       <div className="w-full block text-[#fcfffe]">
       <Header/>
       <main>

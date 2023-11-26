@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Button, Input } from "./index.js";
+import { Button, Input, Spinner } from "./index.js";
 import appwriteAuthService from "../appwrite/appwriteAuth.js";
 import { useDispatch } from "react-redux";
 import { authSliceLogin } from "../store/authSlice.js";
@@ -13,15 +13,17 @@ function SignUp() {
   const { register, handleSubmit } = useForm();
 
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
 
   const onSubmit = async (data) => {
     setError("");
+    setLoading(true);
     try {
       const session = await appwriteAuthService.createAccount(data);
-      const verifyEmail = await appwriteAuthService.sendVerificationEmail("http://localhost:5173/verify-email")
+      await appwriteAuthService.sendVerificationEmail("http://localhost:5173/verify-email")
       
-      console.log("VerifyEmail Data: ",verifyEmail);
+      //console.log("VerifyEmail Data: ",verifyEmail);
       if (session) {
         const userData = await appwriteAuthService.getCurrentUser();
         if (userData) {
@@ -32,6 +34,8 @@ function SignUp() {
     } catch (error) {
       console.log("Error in the signup component: ", error);
       setError(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -48,7 +52,7 @@ function SignUp() {
   
   return (
     <section className="flex justify-center py-8">
-      <div className="grid grid-cols-1 w-1/2 rounded-lg shadow-lg shadow-white bg-black">
+      <div className="grid grid-cols-1 w-3/4 sm:w-1/2 rounded-lg shadow-lg shadow-white bg-black">
         <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
           <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
             <h2 className="text-3xl font-bold leading-tight text-white sm:text-4xl">
@@ -58,13 +62,14 @@ function SignUp() {
               Already have an account?{" "}
               <Link
                 to="/login"
-                title=""
+                title="Sign in"
                 className="font-medium text-[#00cee6] transition-all duration-200 hover:underline hover:text-white"
               >
                 Sign In
               </Link>
             </p>
             {error && <p className="text-red-500 mt-8 text-center">{error}</p>}
+            {loading && <Spinner />}
             <form className="mt-8" onSubmit={handleSubmit(onSubmit)}>
               <div className="space-y-5">
                 <Input

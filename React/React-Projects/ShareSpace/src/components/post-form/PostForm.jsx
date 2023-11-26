@@ -35,11 +35,10 @@ function PostForm({post}) {
 
             if(dbPost) navigate(`/post/${dbPost.$id}`);
         }else{
-            console.log("FOrm data: ",data);
             if(file){
                 const fileId = file.$id;
                 data.thumbnail = fileId;
-                console.log("UserData inside PostForm: ", userData);
+
                 const dbPost = await appwriteStorage.createPost({
                     ...data,
                     userId: userData.$id,
@@ -59,7 +58,7 @@ function PostForm({post}) {
                         .replace(/[^a-zA-Z\d\s]+/g,"-")
                         .replace(/\s/g,"-");
         return "";
-    })
+    },[])
 
     useEffect(()=>{
         const subscription = watch((value,{name})=>{

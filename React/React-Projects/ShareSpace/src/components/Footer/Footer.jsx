@@ -1,9 +1,9 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Logo from "../Logo";
 
 function Footer() {
   return (
-    <section className="relative overflow-hidden py-10 bg-[#193d4e] border border-t-2 ">
+    <section className="relative overflow-hidden py-10 bg-black border border-t-2 ">
       <div className="relative z-10 mx-auto max-w-7xl px-4">
         <div className="-m-6 flex flex-wrap">
           <div className="w-full p-6 md:w-1/2 lg:w-5/12">
@@ -136,12 +136,12 @@ function Footer() {
           <div className="w-full flex justify-center items-center">
                 <p className="text-sm text-[#3f7cb3]">
                   &copy; Copyright 2023
-                  <NavLink
+                  <Link
                     className="px-1 text-white"
                     to={"https://twitter.com/starabdul100"}
                   >
                     Abdul Shaik
-                  </NavLink>
+                  </Link>
                   . All rights reserved.
                 </p>
               </div>

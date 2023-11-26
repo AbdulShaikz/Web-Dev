@@ -5,8 +5,8 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 function ResetPassword() {
-  const { register, handleSubmit, setValue, watch } = useForm();
-  const [error, setError] = useState("");
+  const { register, handleSubmit, setValue, watch, setError } = useForm();
+  const [error, setErrorState] = useState("");
   const navigate = useNavigate();
 
   const password = watch("password", "");
@@ -14,9 +14,9 @@ function ResetPassword() {
 
   const passwordMatch = useCallback(() => {
     if (password !== confirm_password) {
-      setError("Passwords do not match");
+      setErrorState("Passwords do not match");
     } else {
-      setError("");
+      setErrorState("");
     }
   }, [password, confirm_password]);
 
@@ -25,7 +25,8 @@ function ResetPassword() {
   }, [passwordMatch]);
 
   const resetPassword = async (data) => {
-    setError(""); // Clear error message before proceeding
+    setError("");
+    setErrorState(""); // Clear error message before proceeding
 
     try {
       // console.log("Im in try");
@@ -53,8 +54,6 @@ function ResetPassword() {
         navigate("/");
       }
     } catch (error) {
-      console.log("Im in catch");
-      console.log(error);
       setError(error.message);
     }
   };
@@ -74,14 +73,18 @@ function ResetPassword() {
                   type="password"
                   placeholder="Password"
                   {...register("password")}
-                  onInput={(e) => setValue("password", e.target.value)}
+                  onInput={(e) => {
+                    setValue("password", e.target.value);
+                  }}
                 />
                 <Input
                   label={"Confirm Password"}
                   type="password"
                   placeholder="Confirm Password"
                   {...register("confirm_password")}
-                  onInput={(e) => setValue("confirm_password", e.target.value)}
+                  onInput={(e) => {
+                    setValue("confirm_password", e.target.value);
+                  }}
                 />
 
                 {error !== "" && (

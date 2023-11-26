@@ -11,6 +11,7 @@ function PostCard({ $id, title, thumbnail, author, status }) {
           <img
             src={appwriteStorage.getFilePreview(thumbnail)}
             alt={title}
+            loading="lazy"
             className="rounded-xl h-full object-cover transform transition-transform hover:scale-95"
           />
         </div>

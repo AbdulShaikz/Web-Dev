@@ -127,12 +127,13 @@ class Service {
 
    getFilePreview(fileId){
     try {
-         return  this.bucket.getFilePreview(
+         return this.bucket.getFilePreview(
             conf.appwriteBucketId,
             fileId,
         )
     } catch (error) {
         console.log("Error while getting preview of file: ",error);
+        return false;
     }
   }
 }
