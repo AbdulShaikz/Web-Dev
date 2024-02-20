@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding:0;
+}
+
+.main{
+    height: 80vh;
+    background-image:url("./assets/images/background.jpg");
+    background-poosition: center center;
+    background-repeat:no-repeat;
+    position: relative;
+}
+
+.main .box{
+    height:80vh;
+    width:100%;
+    background-color:black;
+    opacity:0.5;
+    position: absolute;
+    top:0;
+}
+
+nav {
+    max-width:80vw;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
