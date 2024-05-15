@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Desk</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <div
+      class="w-full min-h-screen bg-gradient-to-r from-zinc-900 to-blue-900 flex flex-col gap-2"
+    >
+      <div class="task-details form text-white w-full">
+        <a
+          class="inline-block bg-blue-900 p-1 m-3 text-white rounded-md px-2"
+          href="/"
+          >Back</a
+        >
+
+        <div class="task-container flex flex-col items-center">
+          <h2 class="text-xl p-2"><%=filename%></h2>
+          <p class="text-md p-2 tracking-tighter"><%=filedata%></p>
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

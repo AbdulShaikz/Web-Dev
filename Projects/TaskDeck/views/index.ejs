@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Desk</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <div
+      class="w-full min-h-screen bg-gradient-to-r from-zinc-900 to-blue-900 flex flex-col gap-2"
+    >
+      <div class="task-title form text-white w-full">
+        <form
+          class="flex flex-col gap-2 justify-center items-center h-1/2 w-full tracking-normal"
+          action="/create"
+          method="POST"
+        >
+          <label for="task-title" class="text-xl">Title</label>
+          <input
+            name="task-title"
+            type="text"
+            class="block w-1/2 outline-none rounded-md h-10 p-1 text-black"
+            placeholder="task title"
+          />
+          <label for="task-details" class="text-xl">Details</label>
+          <textarea
+            name="task-details"
+            rows="3"
+            class="outline-none block w-1/2 rounded-md p-1 text-black resize-none"
+            placeholder="task details goes here.."
+          ></textarea>
+          <input
+            type="submit"
+            value="Create Task"
+            class="cursor-pointer block w-1/2 mt-3 bg-blue-500 p-2 rounded-xl"
+          />
+        </form>
+      </div>
+      <div class="task-deck flex flex-wrap gap-5 w-full justify-center mt-3">
+        <% if(files.length > 0){ %> <% files.forEach((file) => { %>
+        <div
+          class="task-card bg-gradient-to-r from-blue-900 to-zinc-900 w-1/4 p-2 m-2 ring-1 text-white rounded-sm"
+        >
+          <%= file %>
+          <a
+            href="/files/<%=file%>"
+            class="block mt-3 p-1 rounded-md bg-white text-blue-900 w-fit tracking-tighter"
+            >Details</a
+          >
+
+          <div class="task-options flex justify-between">
+            <a
+            href="/edit/<%=file%>"
+            class="inline-block mt-3 p-1 rounded-md bg-white text-blue-900 w-fit tracking-tighter"
+            >Edit Title</a
+          >
+
+          <a
+            href="/delete/<%=file%>"
+            class="inline-block mt-2 p-1 rounded-md bg-red-900 text-white w-fit tracking-tighter"
+            >Delete</a
+          >
+          </div>
+        </div>
+        <% }) %> <% } else{ %>
+        <div class="w-full text-center text-white m-3">No tasks to display</div>
+        <% } %>
+      </div>
+    </div>
+  </body>
+</html>

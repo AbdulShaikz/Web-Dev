@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Desk</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <div
+      class="w-full min-h-screen bg-gradient-to-r from-zinc-900 to-blue-900 flex flex-col gap-2"
+    >
+      <div class="task-title form text-white w-full">
+        <a
+          class="inline-block bg-blue-900 p-1 m-3 text-white rounded-md px-2"
+          href="/"
+          >Back</a
+        >
+
+        <div class="task-container flex flex-col items-center">
+            <form action="/edit" method="POST">
+                <label for="oldtitle" class="text-xl">Current Title</label>
+                <input
+                  name="oldtitle"
+                  type="text"
+                  class="block w-1/2 outline-none rounded-md h-10 p-1 text-black cursor-not-allowed"
+                  value="<%=filename%>"
+                />
+                <label for="newtitle" class="text-xl">New Title</label>
+                <input
+                  name="newtitle"
+                  type="text"
+                  class="block w-1/2 outline-none rounded-md h-10 p-1 text-black"
+                />
+    
+                <input
+                    type="submit"
+                    value="Update"
+                class="cursor-pointer block w-1/2 mt-3 bg-blue-500 p-2 rounded-xl"
+              />
+            </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
