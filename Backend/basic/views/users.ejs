@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="main-container w-full h-screen bg-zinc-800 p-1">
+        <h1 class="text-md md:text-xl text-white pb-2 text-center underline">Users</h1>
+        <% users.forEach((user) => { %>
+            <div class="p-2 bg-zinc-300 bg-opacity-10 w-full md:w-1/4 h-1/2 text-sm md:text-md rounded-md flex flex-col flex-wrap items-center">
+                <div class="image w-full h-1/2 bg-red-900 rounded-md flex justify-center items-center">
+                    <img class="w-full h-full object-cover"  src="<%=user.profilePicUrl%>" alt="Profile Image"/>
+                </div>
+                <div class="flex flex-col flex-wrap justify-center items-center">
+                    <h2 class="text-xl text-white font-bold p-2"><%=user.name%></h2>
+                    <h2 class="text-xl text-white font-bold p-2"><%=user.email%></h2>
+                </div>
+                <div class="relative features w-full gap-10">
+                    <a class="absolute left-0 bg-blue-500 text-white p-2 rounded-md w-3/4  pointer">Edit</a>
+                    <a class=" bg-red-500 absolute right-0 text-white p-2 rounded-md w-1/4 pointer">Delete</a>
+                </div>
+            </div>
+        <% }) %>
+        
+    </div>
+</body>
+</html>
