@@ -14,10 +14,6 @@ async function handleGenerateNewShortUrl(req, res){
     return res.json({id: shortId, message: 'Redirected!'})
 }
 
-async function handleRedirectUrl(req, res){
-
-}
-
 async function handleGetAnalytics(req, res){
     const shortId = req.params.shortId;
     const result = await Url.findOne({shortId});
