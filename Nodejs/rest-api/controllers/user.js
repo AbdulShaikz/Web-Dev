@@ -12,9 +12,9 @@ async function handleDisplayAllUsers(req, res) {
           ${allDbUsers
             .map((user) => {
               return `<tr>
-                      <td>${user.first_name}</td>
+                      <td>${user.firstName}</td>
                       <td>${user.email}</td>
-                      <td>${user.job_title}</td>
+                      <td>${user.jobTitle}</td>
                     </tr>`;
             })
             .join("")}

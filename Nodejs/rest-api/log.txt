@@ -32,3 +32,11 @@
 2024-05-30T09:14:27.619Z: DELETE: /api/users/66584316d8279a7d3daf5f42
 
 2024-05-30T09:15:09.041Z: PUT: /api/users/665842ded8279a7d3daf5f40
+
+2024-05-30T09:18:31.663Z: GET: /api/users
+
+2024-05-30T09:18:37.603Z: GET: /api/users/display
+
+2024-05-30T09:18:54.499Z: GET: /api/users/display
+
+2024-05-30T09:19:02.621Z: GET: /api/users/display
